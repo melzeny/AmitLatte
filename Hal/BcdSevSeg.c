@@ -6,6 +6,7 @@
  */
 
 #include "Dio.h"
+#include "Bit_Man.h"
 #include "BcdSevSeg_Cfg.h"
 #include "BcdSevSeg.h"
 
