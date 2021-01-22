@@ -16,7 +16,7 @@ void lap_03_keypad(void)
 	while(1);
 	{
         /*read the pressed button from the keypad*/
-         NumFromKp = Keypad_GetPressedButton();
+        NumFromKp = Keypad_GetPressedButton();
 		/*display the number on SevSegments*/
 		BcdSevSeg_DisplayNum(NumFromKp);
 		BcdSevSeg_Enable(BcdSevSeg_0);
