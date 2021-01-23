@@ -8,28 +8,37 @@
 #include "Dio.h"
 #include "BcdSevSeg.h"
 #include "Keypad.h"
+#include "util/delay.h"
 
-void lap_03_keypad(void)
+void lab_03_keypad(void)
 {
 	uint8 NumFromKp =0 ;
-
-
 	Dio_Init();
-
-	BcdSevSeg_Enable(BcdSevSeg_1);
+	Keypad_Init();
 
 	while(1)
 	{
-		/*read the pressed button from the keypad*/
 		NumFromKp = Keypad_GetPressedButton();
-		if(NumFromKp  != 255)
-			/*display the number on SevSegments*/
+		/*read the pressed button from the keypad*/
+		/*display the number on SevSegments*/
+		if(NumFromKp != 255)
 		{
-			BcdSevSeg_DisplayNum(NumFromKp);
+			BcdSevSeg_Enable(BcdSevSeg_1);
+			BcdSevSeg_Disable(BcdSevSeg_0);
+			BcdSevSeg_DisplayNum(NumFromKp%10);
+			_delay_ms(10);
+
+			/*display the number on SevSegments*/
+			BcdSevSeg_Disable(BcdSevSeg_1);
+			BcdSevSeg_Enable(BcdSevSeg_0);
+			BcdSevSeg_DisplayNum(NumFromKp/10);
+			_delay_ms(10);
 		}
 		else
 		{
-			BcdSevSeg_DisplayNum(8);
+			BcdSevSeg_Disable(BcdSevSeg_1);
+			BcdSevSeg_Disable(BcdSevSeg_0);
+
 		}
 	}
 }

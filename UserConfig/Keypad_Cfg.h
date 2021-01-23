@@ -8,18 +8,18 @@
 #ifndef AMITLATTE_USERCONFIG_KEYPAD_CFG_H_
 #define AMITLATTE_USERCONFIG_KEYPAD_CFG_H_
 
-#define  KEYPAD_ROW_0_PIN       Dio_Channel_D0
-#define  KEYPAD_ROW_1_PIN       Dio_Channel_D1
-#define  KEYPAD_ROW_2_PIN       Dio_Channel_D2
-#define  KEYPAD_ROW_3_PIN       Dio_Channel_D3
+#define  KEYPAD_ROW_0_PIN       Dio_Channel_C4
+#define  KEYPAD_ROW_1_PIN       Dio_Channel_C5
+#define  KEYPAD_ROW_2_PIN       Dio_Channel_C6
+#define  KEYPAD_ROW_3_PIN       Dio_Channel_C7
 
-#define  KEYPAD_COL_0_PIN       Dio_Channel_D4
-#define  KEYPAD_COL_1_PIN       Dio_Channel_D5
-#define  KEYPAD_COL_2_PIN       Dio_Channel_D6
-#define  KEYPAD_COL_3_PIN       Dio_Channel_D7
+#define  KEYPAD_COL_0_PIN       Dio_Channel_C0
+#define  KEYPAD_COL_1_PIN       Dio_Channel_C1
+#define  KEYPAD_COL_2_PIN       Dio_Channel_C2
+#define  KEYPAD_COL_3_PIN       Dio_Channel_C3
 
-#define KEYPAD_LEVEL_ACTIVE      0
-#define KEYPAD_LEVEL_DEACTIVE    1
+#define KEYPAD_LEVEL_ACTIVE      STD_LOW
+#define KEYPAD_LEVEL_DEACTIVE    STD_HIGH
 
 #define KEYPAD_NOT_PRESSED_VAL   255
 

@@ -7,7 +7,6 @@
 
 #ifndef MERNAH_REPO_MCAL_INCLUDE_DIO_H_
 #define MERNAH_REPO_MCAL_INCLUDE_DIO_H_
-#define NUM_OF_ATTACHED_CHANNELS     4
 #include "Std_Types.h"
 typedef enum
 {

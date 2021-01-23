@@ -10,26 +10,14 @@
 #include "Dio.h"
 
 #define NUM_OF_CHANNELS_IN_PORT      8
-extern Dio_ChannelType InternalPullUpCfgChannels[NUM_OF_ATTACHED_CHANNELS];
 
 extern const Dio_CfgUnionType DioCfgUnion ;
 void Dio_Init(void)
 {
-	uint8 i;
-	Dio_ChannelType ChannelId;
-	DDRA = DioCfgUnion.CfgDirArr[0];
-	DDRB = DioCfgUnion.CfgDirArr[1];
-	DDRC = DioCfgUnion.CfgDirArr[2];
-	DDRD = DioCfgUnion.CfgDirArr[3];
-
-
-	/*attach internal pullup resestors to configured channels*/
-	for (i = 0; i < NUM_OF_ATTACHED_CHANNELS; ++i)
-	{
-		ChannelId = InternalPullUpCfgChannels[i];
-		Dio_WriteChannel(ChannelId,STD_HIGH);
-
-	}
+   DDRA = DioCfgUnion.CfgDirArr[0];
+   DDRB = DioCfgUnion.CfgDirArr[1];
+   DDRC = DioCfgUnion.CfgDirArr[2];
+   DDRD = DioCfgUnion.CfgDirArr[3];
 
 }
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_ChannelLevelType ChannelLevel)
