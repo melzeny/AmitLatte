@@ -13,23 +13,25 @@ void lap_03_keypad(void)
 {
 	uint8 NumFromKp =0 ;
 
-	while(1);
+
+	Dio_Init();
+
+	BcdSevSeg_Enable(BcdSevSeg_1);
+
+	while(1)
 	{
-        /*read the pressed button from the keypad*/
-        NumFromKp = Keypad_GetPressedButton();
-		/*display the number on SevSegments*/
-		BcdSevSeg_DisplayNum(NumFromKp);
-		BcdSevSeg_Enable(BcdSevSeg_0);
-		BcdSevSeg_Enable(BcdSevSeg_1);
-
-
-
+		/*read the pressed button from the keypad*/
+		NumFromKp = Keypad_GetPressedButton();
+		if(NumFromKp  != 255)
+			/*display the number on SevSegments*/
+		{
+			BcdSevSeg_DisplayNum(NumFromKp);
+		}
+		else
+		{
+			BcdSevSeg_DisplayNum(8);
+		}
 	}
-
-
-
-
-
 }
 
 

@@ -7,7 +7,7 @@
 
 #ifndef MCU_HW_H_
 #define MCU_HW_H_
-
+#include "Std_Types.h"
 /*DIO Register */
 #define  DDRA     (*((volatile uint8*)0x3A))
 #define  DDRC     (*((volatile uint8*)0x34))

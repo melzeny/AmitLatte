@@ -41,10 +41,11 @@ void BcdSevSeg_Disable(BcdSevSeg_Type SevSegNum)
 }
 void BcdSevSeg_DisplayNum(uint8 NumToDisplay)
 {
-
-	Dio_WriteChannel(BCD_SEVSEG_PIN_0,GET_BIT(NumToDisplay,0));
-	Dio_WriteChannel(BCD_SEVSEG_PIN_1,GET_BIT(NumToDisplay,1));
-	Dio_WriteChannel(BCD_SEVSEG_PIN_2,GET_BIT(NumToDisplay,2));
-	Dio_WriteChannel(BCD_SEVSEG_PIN_3,GET_BIT(NumToDisplay,3));
-
+	if(NumToDisplay < 9)
+	{
+		Dio_WriteChannel(BCD_SEVSEG_PIN_0,GET_BIT(NumToDisplay,0));
+		Dio_WriteChannel(BCD_SEVSEG_PIN_1,GET_BIT(NumToDisplay,1));
+		Dio_WriteChannel(BCD_SEVSEG_PIN_2,GET_BIT(NumToDisplay,2));
+		Dio_WriteChannel(BCD_SEVSEG_PIN_3,GET_BIT(NumToDisplay,3));
+	}
 }

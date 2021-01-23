@@ -11,21 +11,22 @@
 #include "Std_Types.h"
 #include "Dio.h"
 
+
 const Dio_CfgUnionType DioCfgUnion = {
 		{
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A0_Direction */
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A1_Direction */
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A2_Direction */
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A3_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A4_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A5_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A6_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A7_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A0_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A1_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A2_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_A3_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A4_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A5_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A6_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_A7_Direction */
 
 
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B0_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B1_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B2_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_B1_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_B2_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B3_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B4_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_B5_Direction */
@@ -34,23 +35,32 @@ const Dio_CfgUnionType DioCfgUnion = {
 
 
 
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C0_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C1_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C0_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C1_Direction */
 				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C2_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C3_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C3_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C4_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C5_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C6_Direction */
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C7_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C7_Direction */
 
 
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D0_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D1_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D2_Direction */
-				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_D3_Direction */
+				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D3_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D4_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D5_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D6_Direction */
 				DIO_CHANNEL_DIR_INPUT   /* Dio_Channel_D7_Direction */
 		}
 };
+/*please add channel to be attached to internal pullup resistors*/
+Dio_ChannelType InternalPullUpCfgChannels[NUM_OF_ATTACHED_CHANNELS] = {
+		Dio_Channel_D4,
+		Dio_Channel_D5,
+		Dio_Channel_D6,
+		Dio_Channel_D7
+
+};
+
