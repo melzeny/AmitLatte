@@ -6,12 +6,15 @@
  */
 
 #include "Dio.h"
+#include "Lcd.h"
+
 void lab_05_lcd(void)
 {
 
 	Dio_Init();
+
 	Lcd_Init();
-	Lcd_WriteChar('H');
+	Lcd_WriteString("Mohamed");
 
 	while(1)
 	{

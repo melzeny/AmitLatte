@@ -13,49 +13,83 @@
 
 void Lcd_Init(void)
 {
-
+	_delay_ms(15);
+	Lcd_WriteCommand(0x23);
+	Lcd_WriteCommand(0x22);
+	Lcd_WriteCommand(0x28);
+	Lcd_WriteCommand(0x0E);
+	Lcd_WriteCommand(0x01);
 
 }
 void Lcd_WriteChar(uint8 CharToDisplay)
 {
 	/*TODO : Set RS PIN to start writing data */
-     Dio_WriteChannel(Dio_Channel_B1,STD_HIGH);
+	Dio_WriteChannel(LCD_RS,STD_HIGH);
 
 	/* TODO: Clear RW PIN */
-    Dio_WriteChannel(Dio_Channel_B2,STD_LOW);
+	Dio_WriteChannel(LCD_RW,STD_LOW);
 
 	/*TODO: Write Most 4-bits of the character*/
-    Dio_WriteChannel(Dio_Channel_A4, GET_BIT(CharToDisplay,4));
-    Dio_WriteChannel(Dio_Channel_A5, GET_BIT(CharToDisplay,5));
-    Dio_WriteChannel(Dio_Channel_A6, GET_BIT(CharToDisplay,6));
-    Dio_WriteChannel(Dio_Channel_A7, GET_BIT(CharToDisplay,7));
+	Dio_WriteChannel(LCD_D4, GET_BIT(CharToDisplay,4));
+	Dio_WriteChannel(LCD_D5, GET_BIT(CharToDisplay,5));
+	Dio_WriteChannel(LCD_D6, GET_BIT(CharToDisplay,6));
+	Dio_WriteChannel(LCD_D7, GET_BIT(CharToDisplay,7));
 
-    /*TODO Write Enable Pulse */
-    Dio_WriteChannel(Dio_Channel_B3,STD_HIGH);
-    _delay_ms(3);
-    Dio_WriteChannel(Dio_Channel_B3,STD_LOW);
+	/*TODO Write Enable Pulse */
+	Dio_WriteChannel(LCD_E,STD_HIGH);
+	_delay_ms(3);
+	Dio_WriteChannel(LCD_E,STD_LOW);
 
 	/*TODO: Write Least 4-bits of the character*/
+	Dio_WriteChannel(LCD_D4, GET_BIT(CharToDisplay,0));
+	Dio_WriteChannel(LCD_D5, GET_BIT(CharToDisplay,1));
+	Dio_WriteChannel(LCD_D6, GET_BIT(CharToDisplay,2));
+	Dio_WriteChannel(LCD_D7, GET_BIT(CharToDisplay,3));
+	/*TODO Write Enable Pulse */
+	Dio_WriteChannel(LCD_E,STD_HIGH);
+	_delay_ms(3);
+	Dio_WriteChannel(LCD_E,STD_LOW);
 
-    /*TODO Write Enable Pulse */
 
+}
+void Lcd_WriteString(uint8* Ptr2String)
+{
+	uint8 i=0;
 
+	while (Ptr2String[i]!='\0')
+	{
 
+		Lcd_WriteChar(Ptr2String[i]);
+		i++;
+	}
 }
 void Lcd_WriteCommand(uint8 CommandNum)
 {
 	/*TODO : Clear RS PIN to start writing data */
-
-	/* TODO: Set RW PIN */
-
+	Dio_WriteChannel(LCD_RS,STD_LOW);
+	/* TODO: Clear RW PIN */
+	Dio_WriteChannel(LCD_RW,STD_LOW);
 	/*TODO: Write Most 4-bits of the character*/
+	Dio_WriteChannel(LCD_D4, GET_BIT(CommandNum,4));
+	Dio_WriteChannel(LCD_D5, GET_BIT(CommandNum,5));
+	Dio_WriteChannel(LCD_D6, GET_BIT(CommandNum,6));
+	Dio_WriteChannel(LCD_D7, GET_BIT(CommandNum,7));
 
-    /*TODO Write Enable Pulse */
+	/*TODO Write Enable Pulse */
+	Dio_WriteChannel(LCD_E,STD_HIGH);
+	_delay_ms(3);
+	Dio_WriteChannel(LCD_E,STD_LOW);
 
 
 	/*TODO: Write Least 4-bits of the character*/
-
-    /*TODO Write Enable Pulse */
+	Dio_WriteChannel(LCD_D4, GET_BIT(CommandNum,0));
+	Dio_WriteChannel(LCD_D5, GET_BIT(CommandNum,1));
+	Dio_WriteChannel(LCD_D6, GET_BIT(CommandNum,2));
+	Dio_WriteChannel(LCD_D7, GET_BIT(CommandNum,3));
+	/*TODO Write Enable Pulse */
+	Dio_WriteChannel(LCD_E,STD_HIGH);
+	_delay_ms(3);
+	Dio_WriteChannel(LCD_E,STD_LOW);
 
 
 
