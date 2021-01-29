@@ -24,5 +24,11 @@
 #define  PINC     (*((volatile uint8*)0x33))
 #define  PIND     (*((volatile uint8*)0x30))
 
+#define  MCUCR    (*((volatile uint8*)0x55))
+#define  MCUCSR    (*((volatile uint8*)0x54))
+#define  GICR     (*((volatile uint8*)0x5B))
+#define  SREG     (*((volatile uint8*)0x5F))
+
+
 
 #endif /* MCU_HW_H_ */

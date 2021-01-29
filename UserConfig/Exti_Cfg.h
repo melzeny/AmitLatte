@@ -30,10 +30,10 @@ EXTI_SENSE_MODE_FALLINGEDGE  0x00
 EXTI_SENSE_MODE_RISINGEDGE   0x01
  *
  */
-#define EXTI_2_SENSE_MODE_SELECTOR     0x11u
+#define EXTI_2_SENSE_MODE_SELECTOR     0x00u
 
-#define EXTI_0_CALLBACK_PTR()            User_ExtiCallBack()
-#define EXTI_1_CALLBACK_PTR()            User_ExtiCallBack()
-#define EXTI_2_CALLBACK_PTR()            User_ExtiCallBack()
+#define EXTI_0_CALLBACK_PTR            User_ExtiCallBack
+#define EXTI_1_CALLBACK_PTR            User_ExtiCallBack
+#define EXTI_2_CALLBACK_PTR            User_ExtiCallBack
 
 #endif /* AMITLATTE_USERCONFIG_EXTI_CFG_H_ */
