@@ -14,7 +14,7 @@ void lab_05_lcd(void)
 	Dio_Init();
 
 	Lcd_Init();
-	Lcd_WriteString("Mohamed");
+	Lcd_WriteString("Mohamed",1,4);
 
 	while(1)
 	{

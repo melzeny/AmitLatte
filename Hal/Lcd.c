@@ -52,9 +52,12 @@ void Lcd_WriteChar(uint8 CharToDisplay)
 
 
 }
-void Lcd_WriteString(uint8* Ptr2String)
+void Lcd_WriteString(uint8* Ptr2String,uint8 Row,uint8 Coloum)
 {
+	uint8 var;
+	var=0x80|((Row*0x40)+Coloum);
 	uint8 i=0;
+	Lcd_WriteCommand(var);
 
 	while (Ptr2String[i]!='\0')
 	{

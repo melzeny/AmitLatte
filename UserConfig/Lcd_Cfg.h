@@ -35,8 +35,8 @@
 #define SHIFT_THE_ENTIRE_DISPLAYTO_THE_RIGHT                     0x1Cu
 #define FORCE_CURSOR_TO_BEGINNING_OF_1ST_LINE                    0x80u
 #define FORCE_CURSOR_TO_BEGINNING_OF_2ST_LINE                    0xC0u
-#define TWO_LINES_(D4_D7_4_BITS)                                 0x28u
-#define TWO_LINES_(D0_D7_8_BITS)                                 0x38u
+#define TWO_LINES_4_BITS                                         0x28u
+#define TWO_LINES_8_BITS                                         0x38u
 
 
 

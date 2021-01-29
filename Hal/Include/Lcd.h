@@ -13,7 +13,7 @@
 void Lcd_Init(void);
 void Lcd_WriteChar(uint8 CharToDisplay);
 void Lcd_WriteCommand(uint8 CommandNum);
-void Lcd_WriteString(uint8* Ptr2String);
+void Lcd_WriteString(uint8* Ptr2String,uint8 Row,uint8 Coloum);
 
 
 #endif /* AMITLATTE_HAL_INCLUDE_LCD_H_ */
