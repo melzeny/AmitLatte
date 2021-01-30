@@ -68,7 +68,10 @@ void __vector_2(void) __attribute__((signal,used));
 void __vector_2(void)
 {
 
-	EXTI_1_CALLBACK_PTR();
+	if(EXTI_1_CALLBACK_PTR != (void*)0)
+		{
+			EXTI_1_CALLBACK_PTR();
+		}
 
 }
 /* ISR for EXTI 2*/
@@ -76,8 +79,10 @@ void __vector_3(void) __attribute__((signal,used));
 void __vector_3(void)
 {
 
-	EXTI_2_CALLBACK_PTR();
-
+	if(EXTI_2_CALLBACK_PTR != (void*)0)
+		{
+			EXTI_2_CALLBACK_PTR();
+		}
 }
 
 

@@ -12,7 +12,7 @@
 
 void User_ExtiCallBack(void)
 {
-    Dio_FlipChannel(Dio_Channel_C7);
+	Dio_FlipChannel(Dio_Channel_C7);
 
 }
 void lab_04_Exti(void)
@@ -22,12 +22,9 @@ void lab_04_Exti(void)
 	Exti_Init();
 
 
-    while(1)
-    {
+	while(1)
+	{
 
-
-
-    }
-
+	}
 
 }

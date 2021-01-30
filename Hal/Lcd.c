@@ -93,9 +93,28 @@ void Lcd_WriteCommand(uint8 CommandNum)
 	Dio_WriteChannel(LCD_E,STD_HIGH);
 	_delay_ms(3);
 	Dio_WriteChannel(LCD_E,STD_LOW);
+}
 
+void Lcd_StoreCustomChar(uint8* Ptr2CustomChar,uint8 CGRamIdx)
+{
+	uint8 i;
+	/* AC -> CGRAM   0b01<Address>*/
+	Lcd_WriteCommand(0b01000000 | (CGRamIdx*8));
+	for (i = 0; i < 8; ++i) {
+		Lcd_WriteChar(Ptr2CustomChar[i]);
+	}
+	/*Return AC -> DDRAM  */
+	Lcd_WriteCommand(0x02);
 
+}
+void Lcd_DisplayCustomChar(uint8 CGRamIdx,uint8 Row, uint8 Coloum)
+{
+	uint8 var;
+	/*go to desired position*/
+	var=0x80|((Row*0x40)+Coloum);
+	Lcd_WriteCommand(var);
+	/*Write index of custom character in DDRAM */
+	Lcd_WriteChar(CGRamIdx);
 
 
 }
-
