@@ -8,17 +8,9 @@
 #include"Dio.h"
 #include "Gpt.h"
 #include "Cpu_GlobalInt.h"
-/*Periodic Task 1ms*/
-void user_TimerIsrCallBack(void)
-{
-	static uint32 counter = 0;
-	if(counter==500)
-	{
-		Dio_FlipChannel(Dio_Channel_C7);
-		counter =0;
-	}
-	counter++;
-}
+
+
+
 void lab_06_timer(void)
 {
 	Dio_Init();

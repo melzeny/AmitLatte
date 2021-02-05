@@ -27,7 +27,7 @@
 
 #define GPT_INTERRUPT_EN          ENABLE
 
-#define GPT_CALLBACK_PTR          user_TimerIsrCallBack
+#define GPT_CALLBACK_PTR          Scheduler_Process
 /*
  * PLEASE SELCT FROM THE FOLLOWING
  * GPT_WAVEFORM_GEN_NORMAL    0x00
