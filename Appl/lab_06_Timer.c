@@ -7,12 +7,12 @@
 #include "Std_Types.h"
 #include"Dio.h"
 #include "Gpt.h"
-
-/*Periodic Task 10ms*/
+#include "Cpu_GlobalInt.h"
+/*Periodic Task 1ms*/
 void user_TimerIsrCallBack(void)
 {
 	static uint32 counter = 0;
-	if(counter==40)
+	if(counter==500)
 	{
 		Dio_FlipChannel(Dio_Channel_C7);
 		counter =0;
@@ -23,7 +23,8 @@ void lab_06_timer(void)
 {
 	Dio_Init();
 	Gpt_Init();
-	Gpt_StartTimer(16); /* 16 steps ~= 10ms*/
+	ENABLE_GLOBAL_INTTERUPT();
+	Gpt_StartTimer(250); /* 250 steps prescaler=64 FReqSys=16MHz ~= 1ms*/
 	while(1)
 	{
 

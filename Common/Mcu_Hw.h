@@ -25,10 +25,14 @@
 #define  PIND     (*((volatile uint8*)0x30))
 
 #define  MCUCR    (*((volatile uint8*)0x55))
-#define  MCUCSR    (*((volatile uint8*)0x54))
+#define  MCUCSR   (*((volatile uint8*)0x54))
 #define  GICR     (*((volatile uint8*)0x5B))
 #define  SREG     (*((volatile uint8*)0x5F))
 
-
+/* TIMER REGISTER0 */
+#define TCCR0      (*((volatile uint8*)0x53))
+#define TCNT0      (*((volatile uint8*)0x52))
+#define OCR0       (*((volatile uint8*)0x5C))
+#define TIMSK      (*((volatile uint8*)0x59))
 
 #endif /* MCU_HW_H_ */
