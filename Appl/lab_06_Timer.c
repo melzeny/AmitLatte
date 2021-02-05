@@ -21,6 +21,5 @@ void lab_06_timer(void)
 	{
 
 
-
 	}
 }
