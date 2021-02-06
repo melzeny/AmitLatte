@@ -26,6 +26,7 @@
 #define GPT_TIMER_MODE_SELECTOR    GPT_TIMER_MODE_CONTINOUSE
 
 #define GPT_INTERRUPT_EN          ENABLE
+#define GPT_OUTPUT_COMPARE_OC0    ENABLE
 
 #define GPT_CALLBACK_PTR          Scheduler_Process
 /*

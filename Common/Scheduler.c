@@ -26,7 +26,7 @@ void Scheduler_Process(void)
 	static uint32 counter = 0;
 	for (i = 0; i < Scheduler_NumOfTasks; ++i)
 	{
-		if( (counter%Tasks[i].Periodicity) == 0)
+		if( ((counter%Tasks[i].Periodicity) == 0) && (counter!=0) )
 		{
 			if(Tasks[i].TaskStatus == TaskStatus_Active)
 			{

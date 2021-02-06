@@ -14,8 +14,25 @@
 
 void Task_Pwm(void)/*~ 5 ms*/
 {
-
-    Dio_FlipChannel(Dio_Channel_D0);
+	static uint8 CounterFlag = 0;
+	if(CounterFlag == 0)
+	{
+		Dio_WriteChannel(Dio_Channel_D0,STD_HIGH);
+		CounterFlag++;
+	}
+	else if(CounterFlag == 1)
+	{
+		Dio_WriteChannel(Dio_Channel_D0,STD_LOW);
+		CounterFlag++;
+	}
+	else if(CounterFlag == 3)
+	{
+		CounterFlag =0;
+	}
+	else
+	{
+		CounterFlag++;
+	}
 
 
 }

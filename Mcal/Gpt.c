@@ -44,6 +44,10 @@ void Gpt_Init(void)
 
 
 #endif /*(GPT_WAVEFORM_GEN_MODE==0x01)*/
+#if GPT_OUTPUT_COMPARE_OC0==ENABLE
+	SET_BIT(TCCR0,4);
+	CLR_BIT(TCCR0,5);
+#endif
 
 }
 void Gpt_StartTimer(uint8 TargetSteps)
