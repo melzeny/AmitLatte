@@ -10,18 +10,14 @@
  *
  * Please declare the functions here
 */
-void Task_01(void);
-void Task_02(void);
-void Task_03(void);
+void Task_Pwm(void);
 
 /***************CONFIGURATION***************/
-#define SCHEDULER_NUM_OF_TASKS      3
+#define SCHEDULER_NUM_OF_TASKS      1
 
 Scheduler_TaskType Tasks[SCHEDULER_NUM_OF_TASKS] =
 {
-		{0,Task_01,500,TaskStatus_Active },
-		{1,Task_02,700,TaskStatus_Active },
-		{2,Task_03,900,TaskStatus_Active }
+		{0,Task_Pwm,5,TaskStatus_Active }
 };
 /**************************/
 const uint8 Scheduler_NumOfTasks = SCHEDULER_NUM_OF_TASKS;
