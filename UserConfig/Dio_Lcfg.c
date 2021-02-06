@@ -34,8 +34,8 @@ const Dio_CfgUnionType DioCfgUnion = {
 
 
 
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C0_Direction */
-				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C1_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C0_Direction */
+				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C1_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C2_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_C3_Direction */
 				DIO_CHANNEL_DIR_OUTPUT,  /* Dio_Channel_C4_Direction */

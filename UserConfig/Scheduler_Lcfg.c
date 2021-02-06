@@ -17,7 +17,7 @@ void Task_Pwm(void);
 
 Scheduler_TaskType Tasks[SCHEDULER_NUM_OF_TASKS] =
 {
-		{0,Task_Pwm,5,TaskStatus_Active }
+		{0,Task_Pwm,100,TaskStatus_Active }
 };
 /**************************/
 const uint8 Scheduler_NumOfTasks = SCHEDULER_NUM_OF_TASKS;

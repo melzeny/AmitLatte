@@ -32,13 +32,19 @@ void Gpt_Init(void)
 	CLR_BIT(TCCR0,6);
 
 	/*TODO: Enable Timer Interrupt based on configuration */
-# if GPT_INTERRUPT_EN == ENABLE
-	SET_BIT(TIMSK,1);
-# endif /* GPT_INTERRUPT_EN == ENABLE */
+
 # if GPT_OUTPUT_COMPARE_OC0==ENABLE
 	SET_BIT(TCCR0,4);
 	CLR_BIT(TCCR0,5);
 # endif
+# if GPT_INTERRUPT_CTC_EN == ENABLE
+	SET_BIT(TIMSK,1);
+# endif /* GPT_INTERRUPT_EN == ENABLE */
+
+# if GPT_INTERRUPT_OVF_EN == ENABLE
+	SET_BIT(TIMSK,0);
+# endif /* GPT_INTERRUPT_EN == ENABLE */
+
 
 #elif (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_NORMAL) /*NORMAL MODE*/
 
@@ -47,13 +53,19 @@ void Gpt_Init(void)
 	CLR_BIT(TCCR0,6);
 
 	/*TODO: Enable Timer Interrupt based on configuration */
-# if GPT_INTERRUPT_EN == ENABLE
-	SET_BIT(TIMSK,0);
-# endif /* GPT_INTERRUPT_EN == ENABLE */
+
 # if GPT_OUTPUT_COMPARE_OC0==ENABLE
 	SET_BIT(TCCR0,4);
 	CLR_BIT(TCCR0,5);
 # endif
+# if GPT_INTERRUPT_CTC_EN == ENABLE
+	SET_BIT(TIMSK,1);
+# endif /* GPT_INTERRUPT_EN == ENABLE */
+
+# if GPT_INTERRUPT_OVF_EN == ENABLE
+	SET_BIT(TIMSK,0);
+# endif /* GPT_INTERRUPT_EN == ENABLE */
+
 
 #elif (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_FAST_PWM)
     SET_BIT(TCCR0,3);
@@ -72,6 +84,7 @@ void Gpt_Init(void)
     SET_BIT(TCCR0,5);
 
 #endif /*(GPT_WAVEFORM_GEN_MODE*/
+
 
 
 }
@@ -110,6 +123,7 @@ void __vector_10(void)
 	Gpt_StopTimer();
 #endif
 	/*call the callback function*/
+
 	GPT_CALLBACK_PTR();
 }
 
