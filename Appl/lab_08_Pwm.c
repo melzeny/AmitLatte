@@ -42,7 +42,7 @@ void lab_08_Pwm(void)
 	Dio_Init();
 	Gpt_Init();
 	ENABLE_GLOBAL_INTTERUPT();
-	Gpt_StartTimer(250); /* 250 steps prescaler=64 FReqSys=16MHz ~= 1ms*/
+	Gpt_GeneratePwm(20); /* 20% duty cycle*/
 
 	while(1)
 	{

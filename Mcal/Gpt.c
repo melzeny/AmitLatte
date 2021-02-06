@@ -4,8 +4,12 @@
  *  Created on: Jan 30, 2021
  *      Author: future
  */
-#define  GPT_WAVEFORM_GEN_NORMAL    0x00
-#define  GPT_WAVEFORM_GEN_CTC       0x01
+#define  GPT_WAVEFORM_GEN_NORMAL         0x00
+#define  GPT_WAVEFORM_GEN_CTC            0x02
+#define  GPT_WAVEFORM_GEN_FAST_PWM       0x03
+#define  GPT_WAVEFORM_GEN_PHASE_CORRECT  0x01
+
+
 #define  GPT_TIMER_MODE_ONESHOT          0x00
 #define  GPT_TIMER_MODE_CONTINOUSE       0x01
 
@@ -21,6 +25,7 @@
 
 void Gpt_Init(void)
 {
+
 #if (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_CTC) /*CTC MODE*/
 	/*TODO: Set Timer_mode to CTC */
 	SET_BIT(TCCR0,3);
@@ -30,6 +35,10 @@ void Gpt_Init(void)
 # if GPT_INTERRUPT_EN == ENABLE
 	SET_BIT(TIMSK,1);
 # endif /* GPT_INTERRUPT_EN == ENABLE */
+# if GPT_OUTPUT_COMPARE_OC0==ENABLE
+	SET_BIT(TCCR0,4);
+	CLR_BIT(TCCR0,5);
+# endif
 
 #elif (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_NORMAL) /*NORMAL MODE*/
 
@@ -41,13 +50,29 @@ void Gpt_Init(void)
 # if GPT_INTERRUPT_EN == ENABLE
 	SET_BIT(TIMSK,0);
 # endif /* GPT_INTERRUPT_EN == ENABLE */
-
-
-#endif /*(GPT_WAVEFORM_GEN_MODE==0x01)*/
-#if GPT_OUTPUT_COMPARE_OC0==ENABLE
+# if GPT_OUTPUT_COMPARE_OC0==ENABLE
 	SET_BIT(TCCR0,4);
 	CLR_BIT(TCCR0,5);
-#endif
+# endif
+
+#elif (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_FAST_PWM)
+    SET_BIT(TCCR0,3);
+    SET_BIT(TCCR0,6);
+
+    /*Generate non-inverting PWM*/
+    CLR_BIT(TCCR0,4);
+    SET_BIT(TCCR0,5);
+
+#elif (GPT_WAVEFORM_GEN_MODE==GPT_WAVEFORM_GEN_PHASE_CORRECT)
+    CLR_BIT(TCCR0,3);
+    SET_BIT(TCCR0,6);
+
+    /*Generate non-inverting PWM*/
+    CLR_BIT(TCCR0,4);
+    SET_BIT(TCCR0,5);
+
+#endif /*(GPT_WAVEFORM_GEN_MODE*/
+
 
 }
 void Gpt_StartTimer(uint8 TargetSteps)
@@ -67,6 +92,13 @@ uint8 Gpt_GetElapsedCount(void)
 {
 	/*return TCNT0 value */
     return TCNT0;
+
+}
+
+void Gpt_GeneratePwm(uint8 DutyCycle)
+{
+
+	Gpt_StartTimer(((DutyCycle)*256)/100);
 
 }
 /*TIMER0_COMP interrupt*/
