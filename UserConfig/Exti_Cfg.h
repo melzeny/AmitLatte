@@ -11,7 +11,7 @@
 
 #define EXTI_0_ENABLE					ENABLE   /* Channel D2*/
 #define EXTI_1_ENABLE					DISABLE  /* Channel D3*/
-#define EXTI_2_ENABLE					ENABLE   /* Channel B2*/
+#define EXTI_2_ENABLE					DISABLE   /* Channel B2*/
 /*
  * Please choose from the followings
 EXTI_SENSE_MODE_LOWLEVEL     0x00
@@ -32,7 +32,7 @@ EXTI_SENSE_MODE_RISINGEDGE   0x01
  */
 #define EXTI_2_SENSE_MODE_SELECTOR     0x00u
 
-#define EXTI_0_CALLBACK_PTR            User_ExtiCallBack
+#define EXTI_0_CALLBACK_PTR            User_PwmMeterWithExti_CallBack
 #define EXTI_1_CALLBACK_PTR            User_ExtiCallBack
 #define EXTI_2_CALLBACK_PTR            User_ExtiCallBack
 
