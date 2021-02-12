@@ -21,8 +21,8 @@ EXTI_SENSE_MODE_RISINGEDGE   0x11
  *
  */
 
-#define EXTI_0_SENSE_MODE_SELECTOR     0x10u
-#define EXTI_1_SENSE_MODE_SELECTOR     0x11u
+#define EXTI_0_SENSE_MODE_SELECTOR     0x01
+#define EXTI_1_SENSE_MODE_SELECTOR     0x01
 
 /* Please choose from the followings
 
