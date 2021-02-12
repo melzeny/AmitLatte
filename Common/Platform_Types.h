@@ -1,6 +1,8 @@
 #ifndef PLATFORM_TYPE_H
 #define PLATFORM_TYPE_H
 
+
+
 typedef unsigned char uint8;
 typedef unsigned short int uint16;
 typedef unsigned long int uint32;

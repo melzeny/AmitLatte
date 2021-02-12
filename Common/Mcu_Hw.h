@@ -29,10 +29,15 @@
 #define  GICR     (*((volatile uint8*)0x5B))
 #define  SREG     (*((volatile uint8*)0x5F))
 
-/* TIMER REGISTER0 */
+/* TIMER0 REGISTER */
 #define TCCR0      (*((volatile uint8*)0x53))
 #define TCNT0      (*((volatile uint8*)0x52))
 #define OCR0       (*((volatile uint8*)0x5C))
 #define TIMSK      (*((volatile uint8*)0x59))
+
+/* TIMER2 REGISTER */
+#define TCCR2      (*((volatile uint8*)0x45))
+#define TCNT2      (*((volatile uint8*)0x44))
+#define OCR2       (*((volatile uint8*)0x43))
 
 #endif /* MCU_HW_H_ */

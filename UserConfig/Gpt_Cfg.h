@@ -29,7 +29,7 @@
 #define GPT_INTERRUPT_CTC_EN          ENABLE  /**/
 #define GPT_OUTPUT_COMPARE_OC0        ENABLE
 
-#define GPT_CALLBACK_PTR          Scheduler_Process
+#define GPT_CALLBACK_PTR             User_PwmMeterCallBack
 /*
  * PLEASE SELCT FROM THE FOLLOWING
  * GPT_WAVEFORM_GEN_NORMAL         0x00
@@ -38,5 +38,5 @@
  * GPT_WAVEFORM_GEN_PHASE_CORRECT  0x01
  *
  * */
-#define GPT_WAVEFORM_GEN_MODE         GPT_WAVEFORM_GEN_PHASE_CORRECT
+#define GPT_WAVEFORM_GEN_MODE         GPT_WAVEFORM_GEN_CTC
 #endif /* AMITLATTE_USERCONFIG_GPT_CFG_H_ */

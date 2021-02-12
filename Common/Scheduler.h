@@ -8,7 +8,6 @@
 #ifndef AMITLATTE_COMMON_SCHEDULER_H_
 #define AMITLATTE_COMMON_SCHEDULER_H_
 #include "Std_Types.h"
-typedef void (*Ptr2FuncType)(void);
 typedef enum
 {
 	TaskStatus_Suspend,

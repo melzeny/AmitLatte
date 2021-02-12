@@ -51,6 +51,6 @@ const Dio_CfgUnionType DioCfgUnion = {
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D4_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D5_Direction */
 				DIO_CHANNEL_DIR_INPUT,  /* Dio_Channel_D6_Direction */
-				DIO_CHANNEL_DIR_INPUT   /* Dio_Channel_D7_Direction */
+				DIO_CHANNEL_DIR_OUTPUT   /* Dio_Channel_D7_Direction */
 		}
 };
