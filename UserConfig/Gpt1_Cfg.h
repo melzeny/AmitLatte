@@ -27,7 +27,7 @@
  * GPT1_PRESCALER_1024    0x05
  *
  * */
-#define GPT1_PRESCALER_SELECTOR     0x03
+#define GPT1_PRESCALER_SELECTOR     0x03U
 
-
+#define GPT1_ICU_EN                 ENABLE
 #endif /* AMITLATTE_USERCONFIG_GPT1_CFG_H_ */

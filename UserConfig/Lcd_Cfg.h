@@ -10,14 +10,14 @@
 
 #include "Dio.h"
 
-#define LCD_D4                                                   Dio_Channel_A4
-#define LCD_D5                                                   Dio_Channel_A5
-#define LCD_D6                                                   Dio_Channel_A6
-#define LCD_D7                                                   Dio_Channel_A7
+#define LCD_D4                                                   Dio_Channel_C4
+#define LCD_D5                                                   Dio_Channel_C5
+#define LCD_D6                                                   Dio_Channel_C6
+#define LCD_D7                                                   Dio_Channel_C7
 
-#define LCD_RS                                                   Dio_Channel_B1
-#define LCD_RW                                                   Dio_Channel_B2
-#define LCD_E                                                    Dio_Channel_B3
+#define LCD_RS                                                   Dio_Channel_A7
+#define LCD_RW                                                   Dio_Channel_A6
+#define LCD_E                                                    Dio_Channel_A5
 
 #define CLEAR_DISPLAY_SCREEN                                     0x01u
 #define RETURN_HOME                                              0x02u

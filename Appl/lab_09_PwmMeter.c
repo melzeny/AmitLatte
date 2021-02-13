@@ -21,62 +21,65 @@
 #include "Cpu_GlobalInt.h"
 #include "Exti.h"
 #include "Gpt1.h"
+#include "Lcd.h"
 
 
-static uint32 T_us,Ton_us;
+static uint32 T_us=20,Ton_us=90;
 
 void User_PwmMeterWithExti_CallBack(void)
 {
-	static uint8 Flag = 0,t0,t1,t2,T_Steps,Ton_Steps;
+	static uint16 Flag = 0,t0,t1,t2,T_Steps,Ton_Steps;
 
 	if(Flag == 0)
 	{
-		t0 = Gpt_GetElapsedCount();
+		Gpt1_StartTimer(0xFFFF);
+        t0 = Gpt1_GetElapsedCount();
 		Flag =1;
 	}
 	else if(Flag == 1)
 	{
 
-		t1 = Gpt_GetElapsedCount();
+        t1 = Gpt1_GetElapsedCount();
 		Flag =2;
 
 	}
 	else if (Flag == 2)
 	{
 
-		t2 = Gpt_GetElapsedCount();
-		T_Steps = t2-t0;
-		Ton_Steps = t1-t0;
-		T_us = T_Steps*4;
-		Ton_us = Ton_Steps*4;
+        t2 = Gpt1_GetElapsedCount();
+        T_Steps = t2-t0;
+        Ton_Steps = t1-t0;
+        T_us = T_Steps*4;
+        Ton_us = Ton_Steps*4;
 		Flag = 0;
 	}
+
 }
 void lab_09_PwmMeter_WithExti(void)
 {
 	uint8 StringBuffer[8];
 	Dio_Init();
-	//	Lcd_Init();
-	Gpt1_Init();
-	Gpt2_Init();
-	Gpt2_GeneratePwm(30);
-	Gpt1_StartTimer(65535);
+	Lcd_Init();
+    Gpt1_Init();
+    Gpt2_Init();
+    Gpt2_GeneratePwm(30);
+    Gpt1_StartTimer(65535);
+    Exti_Init();
+    ENABLE_GLOBAL_INTTERUPT();
 
 	while(1)
 	{
-#if 0
-		/*TODO : Clear LCD to Write new Reading */
-
+        /*TODO : Clear LCD to Write new Reading */
+        Lcd_WriteCommand(0x01);
 		itoa(Ton_us,StringBuffer,10); /* Convert integer 'Ton_us' to String 'StringBuffer' */
-		Lcd_WriteString("Ton = ",0,0);
-		Lcd_WriteString(StringBuffer,0,8);
+        Lcd_WriteString("Ton = ",0,0);
+        Lcd_WriteString(StringBuffer,0,8);
 
 
-		itoa(T_us,StringBuffer,10);
-		Lcd_WriteString("T = ",1,0);
-		Lcd_WriteString(StringBuffer,1,8);
-
-#endif
+        itoa(T_us,StringBuffer,10);
+        Lcd_WriteString("T = ",1,0);
+        Lcd_WriteString(StringBuffer,1,8);
+        _delay_ms(500);
 	}
 }
 void lab_09_PwmMeter_WithDio(void)

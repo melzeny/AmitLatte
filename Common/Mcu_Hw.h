@@ -46,7 +46,8 @@
 #define TCNT1      (*((volatile uint16*)0x4C))
 #define OCRA       (*((volatile uint16*)0x4A))
 #define OCRB       (*((volatile uint16*)0x48))
-#define TCCR1A     (*((volatile uint16*)0x4F))
-#define TCCR1B     (*((volatile uint16*)0x4E))
+#define TCCR1A     (*((volatile uint8*)0x4F))
+#define TCCR1B     (*((volatile uint8*)0x4E))
+#define ICR1       (*((volatile uint16*)0x46))
 
 #endif /* MCU_HW_H_ */
