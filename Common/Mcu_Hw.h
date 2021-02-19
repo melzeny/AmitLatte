@@ -7,7 +7,7 @@
 
 #ifndef MCU_HW_H_
 #define MCU_HW_H_
-
+#include "Std_Types.h"
 /*DIO Register */
 #define  DDRA     (*((volatile uint8*)0x3A))
 #define  DDRC     (*((volatile uint8*)0x34))
@@ -50,4 +50,38 @@
 #define TCCR1B     (*((volatile uint8*)0x4E))
 #define ICR1       (*((volatile uint16*)0x46))
 
+/*ADC registers */
+typedef struct
+{
+	uint8 ADPS  : 3;
+	uint8 ADIE  : 1;
+	uint8 ADIF  : 1;
+	uint8 ADATE : 1;
+	uint8 ADSC  : 1;
+	uint8 ADEN  : 1;
+}ADCSRA_StrBit;
+typedef union
+{
+	ADCSRA_StrBit B;
+	uint8 R;
+}ADCSRA_TAG;
+
+typedef struct
+{
+	uint8 MUX : 5;
+	uint8 ADLAR:1;
+	uint8 REFS :2;
+}ADMUC_StrBit;
+typedef union
+{
+	ADMUC_StrBit B;
+	uint8 R;
+
+}ADMUX_TAG;
+#define ADCSRA             (*(volatile ADCSRA_TAG*)0x26)
+#define ADMUX              (*(volatile ADMUX_TAG*)0x27)
+#define ADC                (*(volatile uint16*)0x24)
+#define ADCL               (*(volatile uint8*)0x24)
+#define ADCH               (*(volatile uint8*)0x25)
+#define SFIOR              (*(volatile uint8*)0x50)
 #endif /* MCU_HW_H_ */
