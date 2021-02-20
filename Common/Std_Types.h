@@ -18,6 +18,8 @@ typedef void (*Ptr2FuncType)(void);
 #define STD_LOW                 0u
 #define NULL                    (void*)0
 
-
+typedef uint8 Std_RetType;
+#define E_OK             0
+#define E_NOT_OK         1
 
 #endif

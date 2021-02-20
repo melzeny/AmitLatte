@@ -10,14 +10,14 @@
  *
  * Please declare the functions here
 */
-void Switch_StateUpdateTask(void);
+void Adc_LcdTask(void);
 
 /***************CONFIGURATION***************/
 #define SCHEDULER_NUM_OF_TASKS      1
 
 Scheduler_TaskType Tasks[SCHEDULER_NUM_OF_TASKS] =
 {
-		{0,Switch_StateUpdateTask,5,TaskStatus_Active }
+		{0,Adc_LcdTask,200,TaskStatus_Active }
 };
 /**************************/
 const uint8 Scheduler_NumOfTasks = SCHEDULER_NUM_OF_TASKS;

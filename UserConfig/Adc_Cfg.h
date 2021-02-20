@@ -8,11 +8,11 @@
 #ifndef AMITLATTE_USERCONFIG_ADC_CFG_H_
 #define AMITLATTE_USERCONFIG_ADC_CFG_H_
 
-#define ADC_AUTO_TRIGGER_EN         ENABLE  /*disable if Single conversion needed*/
+#define ADC_AUTO_TRIGGER_EN         DISABLE  /*disable if Single conversion needed*/
 #define ADC_INTERRUPT_EN            DISABLE
 
 /*
- * Please choose from the follwoings
+ * Please choose from the followings
  * ADC_PRESCALER_2  0x01
  * ADC_PRESCALER_4  0x02
  * ADC_PRESCALER_8  0x03
@@ -22,7 +22,7 @@
  * ADC_PRESCALER_128 0x07
  *
  * */
-#define ADC_PRESCALER_SELECTOR ADC_PRESCALER_16
+#define ADC_PRESCALER_SELECTOR    ADC_PRESCALER_16
 
 /*
  * ADC_VREF_SOURCE_AREF     0x00
@@ -34,7 +34,7 @@
  * ADC_RESOLUTION_8      0x1
  * ADC_RESOLUTION_10     0x0
  * */
-#define ADC_RESOLUTION_SELECTOR   ADC_RESOLUTION_8
+#define ADC_RESOLUTION_SELECTOR   ADC_RESOLUTION_10
 
 /*
  * ADC_TRIGGER_SOURCE_FREE_RUNNING
@@ -48,5 +48,5 @@
  * */
 #define ADC_TRIGGER_SOURCE_SELECTOR    ADC_TRIGGER_SOURCE_FREE_RUNNING
 
-
+#define ADC_VREF_mV                    5000
 #endif /* AMITLATTE_USERCONFIG_ADC_CFG_H_ */

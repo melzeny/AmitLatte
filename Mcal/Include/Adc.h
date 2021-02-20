@@ -24,6 +24,7 @@ typedef enum
 }Adc_ChannelType;
 void Adc_Init(void);
 void Adc_StartConversion(Adc_ChannelType ChannelId);
-void Adc_GetConversionResult(uint16 * Ptr2Result);
+Std_RetType Adc_GetConversionResult(uint16 * Ptr2Result);
+Std_RetType Adc_GetVoltage_mV(uint16 * Ptr2Voltage_mv);
 
 #endif /* AMITLATTE_MCAL_INCLUDE_ADC_H_ */

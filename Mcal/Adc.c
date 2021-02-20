@@ -42,34 +42,63 @@
 void Adc_Init(void)
 {
 #if (ADC_AUTO_TRIGGER_EN==ENABLE)
-    ADCSRA.B.ADATE = STD_HIGH;
-    SFIOR |= ADC_TRIGGER_SOURCE_SELECTOR<<5;
+	ADCSRA.B.ADATE = STD_HIGH;
+	SFIOR |= ADC_TRIGGER_SOURCE_SELECTOR<<5;
 #endif
 #if (ADC_INTERRUPT_EN == ENABLE)
-    ADCSRA.B.ADIE = STD_HIGH;
+	ADCSRA.B.ADIE = STD_HIGH;
 #endif
-    ADCSRA.B.ADPS = ADC_PRESCALER_SELECTOR;
-    ADMUX.B.REFS = ADC_VREF_SOURCE_SELECTOR;
+	ADCSRA.B.ADPS = ADC_PRESCALER_SELECTOR;
+	ADMUX.B.REFS = ADC_VREF_SOURCE_SELECTOR;
 
-    /*Left adjustment if the 8 bit resolution is selected*/
-    ADMUX.B.ADLAR = ADC_RESOLUTION_SELECTOR;
+	/*Left adjustment if the 8 bit resolution is selected*/
+	ADMUX.B.ADLAR = ADC_RESOLUTION_SELECTOR;
 
 
-    ADCSRA.B.ADEN = STD_HIGH;
+	ADCSRA.B.ADEN = STD_HIGH;
 
 
 }
 void Adc_StartConversion(Adc_ChannelType ChannelId)
 {
-   ADMUX.B.MUX = ChannelId;
-   ADCSRA.B.ADSC = STD_HIGH;
+	ADMUX.B.MUX = ChannelId;
+	ADCSRA.B.ADSC = STD_HIGH;
 
 }
-void Adc_GetConversionResult(uint16 * Ptr2Result)
+Std_RetType Adc_GetConversionResult(uint16 * Ptr2Result)
 {
+	Std_RetType RetVal = E_NOT_OK;
+	/*Make sure that the Adc conversion has been completed */
+	if (ADCSRA.B.ADIF == 1)
+	{
 #if ADC_RESOLUTION_SELECTOR == ADC_RESOLUTION_8
-	*Ptr2Result = ADCH;
+		*Ptr2Result = ADCH;
 #elif ADC_RESOLUTION_SELECTOR == ADC_RESOLUTION_10
-	*Ptr2Result = ADC;
+		*Ptr2Result = ADC;
 #endif
+		/*Clear Flag*/
+		ADCSRA.B.ADIF =1;
+		RetVal = E_OK;
+	}
+	return RetVal;
+}
+
+Std_RetType Adc_GetVoltage_mV(uint16 * Ptr2Voltage_mv)
+{
+	Std_RetType RetVal;
+	uint16 CurrentSteps;
+	uint16 Adc_StepsNum;
+#if ADC_RESOLUTION_SELECTOR == ADC_RESOLUTION_8
+	Adc_StepsNum =256;
+#elif ADC_RESOLUTION_SELECTOR == ADC_RESOLUTION_10
+	Adc_StepsNum =1024;
+#endif
+
+	RetVal = Adc_GetConversionResult(&CurrentSteps);
+	if(RetVal == E_OK)
+	{
+
+		(*Ptr2Voltage_mv) = ((uint32)CurrentSteps *ADC_VREF_mV) / Adc_StepsNum;
+	}
+	return RetVal;
 }
