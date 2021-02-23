@@ -10,14 +10,14 @@
  *
  * Please declare the functions here
 */
-void Adc_LcdTask(void);
+extern void UartTx_Task(void);
 
 /***************CONFIGURATION***************/
 #define SCHEDULER_NUM_OF_TASKS      1
 
 Scheduler_TaskType Tasks[SCHEDULER_NUM_OF_TASKS] =
 {
-		{0,Adc_LcdTask,200,TaskStatus_Active }
+		{0,UartTx_Task,500,TaskStatus_Active }
 };
 /**************************/
 const uint8 Scheduler_NumOfTasks = SCHEDULER_NUM_OF_TASKS;

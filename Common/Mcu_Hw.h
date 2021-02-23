@@ -78,10 +78,70 @@ typedef union
 	uint8 R;
 
 }ADMUX_TAG;
+
+
 #define ADCSRA             (*(volatile ADCSRA_TAG*)0x26)
 #define ADMUX              (*(volatile ADMUX_TAG*)0x27)
 #define ADC                (*(volatile uint16*)0x24)
 #define ADCL               (*(volatile uint8*)0x24)
 #define ADCH               (*(volatile uint8*)0x25)
 #define SFIOR              (*(volatile uint8*)0x50)
+
+/*UART Registers*/
+typedef struct
+{
+	uint8 MPCM:1;
+	uint8 U2X:1;
+	uint8 PE:1;
+	uint8 DOR:1;
+	uint8 FE:1;
+	uint8 UDRE:1;
+	uint8 TXC:1;
+	uint8 RXC:1;
+}UCSRA_StrBFType;
+typedef union
+{
+	uint8 R;
+	UCSRA_StrBFType B;
+
+}UCSRA_TAG;
+
+typedef struct
+{
+	uint8 TXB8:1;
+	uint8 RXB8:1;
+	uint8 UCSZ2:1;
+	uint8 TXEN:1;
+	uint8 RXEN:1;
+	uint8 UDRIE:1;
+	uint8 TXCIE:1;
+	uint8 RXCIE:1;
+}UCSRB_StrBFType;
+typedef union
+{
+	uint8 R;
+	UCSRB_StrBFType B;
+
+}UCSRB_TAG;
+typedef struct
+{
+	uint8 UCPOL:1;
+	uint8 UCSZ:2;
+	uint8 USBS:1;
+	uint8 UPM:2;
+	uint8 UMSEL:1;
+	uint8 URSEL:1;
+}UCSRC_StrBFType;
+typedef union
+{
+	uint8 R;
+	UCSRC_StrBFType B;
+
+}UCSRC_TAG;
+
+#define UDR                (*(volatile uint8*)0x2C)
+#define UBRRL              (*(volatile uint8*)0x29)
+#define UCSRA              (*(volatile UCSRA_TAG*)0x2B)
+#define UCSRB              (*(volatile UCSRB_TAG*)0x2A)
+#define UCSRC              (*(volatile UCSRC_TAG*)0x40)
 #endif /* MCU_HW_H_ */

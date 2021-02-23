@@ -6,12 +6,16 @@
  */
 
 #include "Std_Types.h"
-
-/*Tx Periodic Task ~50ms*/
+#include "Cpu_GlobalInt.h"
+#include "Gpt.h"
+#include "Lcd.h"
+#include "Uart.h"
+#include "Dio.h"
+/*Tx Periodic Task ~500ms*/
 void UartTx_Task(void)
 {
 	static Std_RetType RetVal = E_OK;
-	uint8 DataToTransmit[]= "Message From Node 0";
+	uint8 DataToTransmit[]= "Message From Node 0 ";
 	if(RetVal == E_OK)
 	{
 		RetVal = Uart_StartTansmit(DataToTransmit, sizeof(DataToTransmit) );
@@ -36,7 +40,12 @@ void UartRx_Task(void)
 void lab_12_uart(void)
 {
 	Dio_Init();
+	Lcd_Init();
+	Gpt_Init();
+	Gpt_StartTimer(250);
 	Uart_Init();
+	ENABLE_GLOBAL_INTTERUPT();
+
 	while(1)
 	{
 
