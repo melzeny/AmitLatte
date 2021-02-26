@@ -144,4 +144,6 @@ typedef union
 #define UCSRA              (*(volatile UCSRA_TAG*)0x2B)
 #define UCSRB              (*(volatile UCSRB_TAG*)0x2A)
 #define UCSRC              (*(volatile UCSRC_TAG*)0x40)
+
+/*TODO: Define Hw Registers in Spi Module */
 #endif /* MCU_HW_H_ */

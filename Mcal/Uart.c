@@ -67,7 +67,7 @@ Std_RetType Uart_StartTansmit(uint8* TxDataPtr, uint32 Size)
 }
 Std_RetType Uart_GetReceivedData(uint8* RxdataPtr, uint32* Ptr2Size)
 {
-	uint8 i;
+	uint32 i;
 	Std_RetType RetVal = E_OK;
 	if(UartRxBuffer_Index != 0)
 	{
