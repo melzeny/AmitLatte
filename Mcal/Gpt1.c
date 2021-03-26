@@ -18,7 +18,7 @@
 #include "Gpt1_Cfg.h"
 #include "Gpt1.h"
 
-static T_Steps,Ton_Steps;
+static uint32 T_Steps,Ton_Steps;
 void Gpt1_Init(void)
 {
    /*Set Timer1 Mode */
@@ -41,6 +41,8 @@ void Gpt1_Init(void)
 #if GPT1_ICU_EN == ENABLE
    /*TODO: Configure Input Capture Unit e.g. Enable ICU Interrupt*/
    /**/
+     SET_BIT(TIMSK,5);
+     SET_BIT(TCCR1B,6);
 #endif
 
 }
@@ -51,6 +53,7 @@ void Gpt1_StartTimer(uint16 TargetSteps)
     /*Set Prescaler*/
     TCCR1B &= 0b11111000;
 	TCCR1B = TCCR1B | (GPT1_PRESCALER_SELECTOR&0b00000111);
+
 }
 void Gpt1_StopTimer(void)
 {
@@ -66,10 +69,13 @@ uint16 Gpt1_GetElapsedCount(void)
 void Gpt1_MeasurePwm(uint32* Ptr2Ton_us, uint32* Ptr2T_us)
 {
 	/*TODO: Calculate Ton \ T based on Ton_Steps and T_Steps*/
+	*Ptr2Ton_us=Ton_Steps*4;
+	*Ptr2T_us=T_Steps*4;
 
 
 }
 #endif
+
 void __vector_6(void) __attribute__((signal,used));
 void __vector_6(void)
 {
@@ -79,12 +85,14 @@ void __vector_6(void)
 	{
         t0 = ICR1;
 		Flag =1;
+		CLR_BIT(TCCR1B,6);
 	}
 	else if(Flag == 1)
 	{
 
         t1 = ICR1;
 		Flag =2;
+		SET_BIT(TCCR1B,6);
 
 	}
 	else if (Flag == 2)
@@ -95,5 +103,6 @@ void __vector_6(void)
         Ton_Steps = t1-t0;
 		Flag = 0;
 	}
+
 
 }

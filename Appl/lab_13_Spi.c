@@ -16,9 +16,6 @@ void lab_13_Spi(void)
 	while(1)
 	{
 
-		RxMsg = Spi_StartTransmission(5);
-
-		/*Todo : Display Received Message on Lcd*/
 
 	}
 

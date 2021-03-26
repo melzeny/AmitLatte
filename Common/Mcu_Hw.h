@@ -146,4 +146,31 @@ typedef union
 #define UCSRC              (*(volatile UCSRC_TAG*)0x40)
 
 /*TODO: Define Hw Registers in Spi Module */
+typedef struct
+{
+	uint8 SPR:2;
+	uint8 CPHA:1;
+	uint8 CPOL:1;
+	uint8 MSTR:1;
+	uint8 DORD:1;
+	uint8 SPE:1;
+	uint8 SPIE:1;
+}SPCR_StrBFType;
+typedef union
+{
+	uint8 R;
+	SPCR_StrBFType B;
+
+}SPCR_TAG;
+
+#define SPSR              (*((volatile uint8*)0x2E))
+#define SPCR              (*(volatile SPCR_TAG*)0x2D)
+#define SPDR              (*(volatile uint8*)0x2F)
+
+#define TWBR              (*((volatile uint8*)0x20))
+#define TWSR              (*((volatile uint8*)0x21))
+#define TWCR              (*((volatile uint8*)0x56))
+#define TWAR              (*((volatile uint8*)0x22))
+#define TWDR              (*((volatile uint8*)0x23))
+
 #endif /* MCU_HW_H_ */
